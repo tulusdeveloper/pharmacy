@@ -11,6 +11,7 @@ Rest API Implementation
 Prerequisites
 Python 3.11
 Django 4.
+djangorestframework(pip install djangorestframework)
 
 Original development environment
 Linux OpenSUSE Tumbleweed x86_64
