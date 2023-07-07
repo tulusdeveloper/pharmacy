@@ -9,7 +9,7 @@ Frontend: React
 Rest API Implementation
 
 Prerequisites
-Python 3.10.11
+Python 3.11
 Django 4
 
 Original development environment
