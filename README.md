@@ -10,11 +10,11 @@ Rest API Implementation
 
 Prerequisites
 Python 3.11
-Django 4
+Django 4.
 
 Original development environment
 Linux OpenSUSE Tumbleweed x86_64
-For the love of opensource resources
+For the love of opensource resources.
 
 Installation
 Clone the repository: git clone <repository-url>
@@ -23,7 +23,7 @@ Install the required dependencies: pip install -r requirements.txt
 Start the Django development server: python manage.py runserver
 Navigate to the frontend directory: cd frontend
 Install the frontend dependencies: npm install
-Start the React development server: npm start
+Start the React development server: npm start.
 
 Features
 Inventory Management: Add, update, and track pharmacy inventory items.
