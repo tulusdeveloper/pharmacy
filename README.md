@@ -4,20 +4,32 @@ Pharmacy Management System
 This is a Pharmacy Management System developed using Python with Django framework for the backend, and React for the frontend. It provides a comprehensive solution for managing various aspects of a pharmacy, including inventory management, sales, purchases, and customer management.
 
 Technologies Used
+
 Backend: Python with Django framework
+
 Frontend: React
 Rest API Implementation
 
 Prerequisites
+
 Python 3.11
+
 Django 4.
-djangorestframework(pip install djangorestframework)
+
+djangorestframework (pip install djangorestframework)
+
+djangorestframework-jwt (pip install djangorestframework-jwt)
+
+djangorestframework-simplejwt (pip install djangorestframework-simplejwt)
+
 
 Original development environment
+
 Linux OpenSUSE Tumbleweed x86_64
 For the love of opensource resources.
 
 Installation
+
 Clone the repository: git clone <repository-url>
 Navigate to the project directory: cd pharmacy-management-system
 Install the required dependencies: pip install -r requirements.txt

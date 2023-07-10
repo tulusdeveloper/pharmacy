@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from DjangoMedicalApp import views
 
@@ -25,5 +26,7 @@ router.register("company",views.CompanyViewSet,basename="company")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api/gettoken/',TokenObtainPairView.as_view(),name="gettoken"),
+    path('api/resfresh_token/',TokenRefreshView.as_view(),name="refresh_token")
 ]
