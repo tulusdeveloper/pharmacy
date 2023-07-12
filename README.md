@@ -16,11 +16,6 @@ Python 3.11
 
 Django 4.
 
-djangorestframework (pip install djangorestframework)
-
-djangorestframework-jwt (pip install djangorestframework-jwt)
-
-djangorestframework-simplejwt (pip install djangorestframework-simplejwt)
 
 
 Original development environment
