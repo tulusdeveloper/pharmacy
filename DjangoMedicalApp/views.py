@@ -6,7 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from DjangoMedicalApp.models import Company, CompanyBank, Medicine, MedicalDetails
-from DjangoMedicalApp.serializers import CompanyBankSerializer, CompanySerializer,MedicalDetailsSerializer, MedicineSerializer
+from DjangoMedicalApp.serializers import CompanyBankSerializer, CompanySerializer,MedicalDetailsSerializer, MedicineSerializer, MedicalDetailsSerializerSimple
 
 # Create your views here.
 
@@ -127,9 +127,13 @@ class MedicineViewSet(viewsets.ViewSet):
         medicine_data=serializer.data
         newmedicinelist=[]
 
+        # Adding extra Key for Medicine Details in Medicine
         for medicine in medicine_data:
             # Accessing All the Medicine Details of Current Medicine ID
             medicine_details=MedicalDetails.objects.filter(medicine_id=medicine["id"])
+            medicine_details_serializers=MedicalDetailsSerializerSimple(medicine_details,many=True)
+            medicine["medicine_details"]=medicine_details_serializers.data
+            newmedicinelist.append(medicine)
 
         response_dict={"error":False,"message": "All Medicine List Data","data":newmedicinelist}
         return Response(response_dict)
