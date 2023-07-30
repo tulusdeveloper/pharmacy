@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from DjangoMedicalApp.models import Company, CompanyBank, Medicine
+from DjangoMedicalApp.models import Company, CompanyBank, Medicine, MedicalDetails
 from DjangoMedicalApp.serializers import CompanyBankSerializer, CompanySerializer,MedicalDetailsSerializer, MedicineSerializer
 
 # Create your views here.
@@ -123,7 +123,15 @@ class MedicineViewSet(viewsets.ViewSet):
     def list(self,request):
         medicine=Medicine.objects.all()
         serializer=MedicineSerializer(medicine,many=True,context={"request":request})
-        response_dict={"error":False,"message": "All Medicine List Data","data":serializer.data}
+
+        medicine_data=serializer.data
+        newmedicinelist=[]
+
+        for medicine in medicine_data:
+            # Accessing All the Medicine Details of Current Medicine ID
+            medicine_details=MedicalDetails.objects.filter(medicine_id=medicine["id"])
+
+        response_dict={"error":False,"message": "All Medicine List Data","data":newmedicinelist}
         return Response(response_dict)
     
     def retrieve(self, request,pk=None):
