@@ -6,7 +6,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from DjangoMedicalApp.models import Company, CompanyBank, Medicine
-from DjangoMedicalApp.serializers import CompanyBankSerializer, CompanySerializer, MedicineSerializer
+from DjangoMedicalApp.serializers import CompanyBankSerializer, CompanySerializer,MedicalDetailsSerializer, MedicineSerializer
 
 # Create your views here.
 
@@ -97,6 +97,24 @@ class MedicineViewSet(viewsets.ViewSet):
             serializer = MedicineSerializer(data=request.data, context={"request": request})
             serializer.is_valid(raise_exception=True)
             serializer.save()
+
+            medicine_id=serializer.data['id']
+            # Access The Serializer Id saved in our DATABASE TABLE
+            # print(medicine_id)
+
+            # Adding and Saving Id into Medicine Details Table
+            medicine_details_list=[]
+            for medicine_detail in request.data["medicine_details"]:
+                print(medicine_detail)
+                # Adding medicine id which will work for medicine details serializer
+                medicine_detail["medicine_id"]=medicine_id
+                medicine_details_list.append(medicine_detail)
+                print(medicine_detail)
+
+            serializer2=MedicalDetailsSerializer(data=medicine_details_list,many=True,context={"request":request})
+            serializer2.is_valid()
+            serializer2.save()
+
             dict_response = {"error": False, "message": "Medicine Data Saved successfully"}
         except:
             dict_response = {"error": True, "message": "Error During Saving Medicine Data"}
