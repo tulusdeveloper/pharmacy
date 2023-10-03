@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'DjangoMedicalApp',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
 ]
 
 REST_FRAMEWORK={
@@ -92,6 +96,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'pharmacy',     # Replace with your MySQL database name
+#         'USER': 'root',    # Replace with your MySQL username
+#         'PASSWORD': 'Vim@terminal@linux1$', # Replace with your MySQL password
+#         'HOST': 'localhost',              # Replace with your MySQL server host
+#         'PORT': '3306',                   # Replace with your MySQL server port (usually 3306)
+#     }
+# }
+
 
 
 # Password validation
@@ -134,3 +149,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost.localdomain:3000",
+]

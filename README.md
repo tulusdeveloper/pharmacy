@@ -15,6 +15,7 @@ Prerequisites
 Python 3.11
 
 Django 4.
+pip install django-cors-headers
 
 
 
