@@ -1,4 +1,4 @@
-#!/home/linux-dev/python/pharmacy/env/bin/python3
+#!/home/devlp/python/pharmacy/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
